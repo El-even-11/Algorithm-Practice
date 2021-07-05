@@ -1,0 +1,1 @@
+# LeetCode [726](https://leetcode-cn.com/problems/number-of-atoms/)
