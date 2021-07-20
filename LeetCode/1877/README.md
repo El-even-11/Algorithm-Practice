@@ -1,0 +1,1 @@
+# LeetCode [1877](https://leetcode-cn.com/problems/minimize-maximum-pair-sum-in-array/comments/)
