@@ -1,3 +1,0 @@
-int countArrangement(int n)
-{
-}
