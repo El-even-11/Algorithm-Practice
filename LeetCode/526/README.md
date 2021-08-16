@@ -1,0 +1,1 @@
+# LeetCode [526](https://leetcode-cn.com/problems/beautiful-arrangement/)
