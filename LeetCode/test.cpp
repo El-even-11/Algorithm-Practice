@@ -1,12 +1,10 @@
 #include <iostream>
-#include <unordered_map>
 using namespace std;
 
 int main()
 {
-    unordered_map<int, int> map;
-    map[0]++;
-    cout << map[0] << endl;
+    cout << "hello world" << endl;
+    system("pause");
 
-    return 0;
+    return 0;   
 }
