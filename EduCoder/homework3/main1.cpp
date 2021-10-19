@@ -74,25 +74,24 @@ int main()
     // Input processing.
 
     // Solve the linear system and print the results.
-    // vector<stringstream> strs;
-    // string str;
-    // while (!cin.eof())
-    // {
-    //     getline(cin, str);
-    //     strs.push_back(stringstream(str));
-    // }
+    vector<stringstream> strs;
+    string str;
+    while (!cin.eof())
+    {
+        getline(cin, str);
+        strs.push_back(stringstream(str));
+    }
 
-    vector<vector<double>> mat = {{2, 3, 10},
-                                  {2, 3, 12}};
-    // double a;
-    // for (int i = 0; i < strs.size(); i++)
-    // {
-    //     mat.push_back(vector<double>());
-    //     while (strs[i] >> a)
-    //     {
-    //         mat[i].push_back(a);
-    //     }
-    // }
+    vector<vector<double>> mat;
+    double a;
+    for (int i = 0; i < strs.size(); i++)
+    {
+        mat.push_back(vector<double>());
+        while (strs[i] >> a)
+        {
+            mat[i].push_back(a);
+        }
+    }
 
     Gaussian g(mat);
     g.solve();
