@@ -36,6 +36,8 @@ int myhash(int function, int key, int n)
         return key % m;
     case 2:
         return (key / m) % m;
+    default:
+        return 0;
     }
 }
 
