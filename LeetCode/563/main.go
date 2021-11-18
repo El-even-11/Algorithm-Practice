@@ -1,7 +1,5 @@
 package main
 
-import "math"
-
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
