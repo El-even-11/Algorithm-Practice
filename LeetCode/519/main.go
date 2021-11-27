@@ -22,16 +22,19 @@ func (this *Solution) Flip() []int {
 		a--
 	}
 	for b < this.m*this.n && this.mt[b] {
-		a++
+		b++
 	}
 
 	var c int
 	if a >= 0 {
 		if _, ok := this.mt[a]; !ok {
 			c = a
+		} else {
+			c = b
 		}
+	} else {
+		c = b
 	}
-	c = b
 
 	this.mt[c] = true
 
