@@ -7,26 +7,6 @@ class Solution
 public:
     int findCenter(vector<vector<int>> &edges)
     {
-        bool exist[100000];
-        for (int i = 0; i <= edges.size(); i++)
-        {
-            exist[i] = false;
-        }
-
-        for (int i = 0; i <= edges.size(); i++)
-        {
-            if (exist[edges[i][0]])
-            {
-                return edges[i][0];
-            }
-            if (exist[edges[i][1]])
-            {
-                return edges[i][1];
-            }
-            exist[edges[i][0]] = true;
-            exist[edges[i][1]] = true;
-        }
-
-        return 0;
+        return edges[0][0]==edges[1][0]||edges[0][0]==edges[1][1]?edges[0][0]:edges[0][1];
     }
 };
