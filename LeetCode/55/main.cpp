@@ -1,20 +1,16 @@
 #include <vector>
 using namespace std;
 
-class Solution
+bool canJump(vector<int> &nums)
 {
-public:
-    bool canJump(vector<int> &nums)
+    int farthest = 0;
+    int n = nums.size();
+    for (int i = 0; i < n; i++)
     {
-        int farthest = 0;
-        int n = nums.size();
-        for (int i = 0; i < n; i++)
+        if (i <= farthest)
         {
-            if (i <= farthest)
-            {
-                farthest = max(farthest, i + nums[i]);
-            }
+            farthest = max(farthest, i + nums[i]);
         }
-        return farthest >= n - 1;
     }
-};
+    return farthest >= n - 1;
+}
