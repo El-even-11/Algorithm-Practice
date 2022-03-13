@@ -10,7 +10,7 @@ bool validUtf8(vector<int> &data)
     {
         int a = (data[i] >> 7) & 1;
         if (a == 0)
-        {
+        {                              
             i++;
             continue;
         }
