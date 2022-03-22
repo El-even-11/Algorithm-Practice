@@ -21,18 +21,15 @@ public:
     {
         if (!root)
         {
-            cout << "false ";
             return false;
         }
         int val = root->val;
         if (targets[val])
         {
-            cout << "true ";
             return true;
         }
         targets[sum - val] = 1;
         bool ret = dfs(root->left) || dfs(root->right);
-        cout << (ret ? "true " : "false ");
         return ret;
     }
 
