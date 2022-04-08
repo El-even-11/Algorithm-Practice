@@ -12,19 +12,8 @@ func isEvenOddTree(root *TreeNode) bool {
 
 	i := 0
 	for len(queue) > 0 {
-		pre := queue[0]
-		if pre.Val%2 == i%2 {
-			return false
-		}
-		queue = queue[1:]
 		size := len(queue)
-		if pre.Left != nil {
-			queue = append(queue, pre.Left)
-		}
-
-		if pre.Right != nil {
-			queue = append(queue, pre.Right)
-		}
+		pre := (i % 2) * 0x7fffffff
 
 		for j := 0; j < size; j++ {
 			node := queue[0]
@@ -32,10 +21,10 @@ func isEvenOddTree(root *TreeNode) bool {
 			if node.Val%2 == i%2 {
 				return false
 			}
-			if i%2 == 0 && node.Val <= pre.Val || i%2 == 1 && node.Val >= pre.Val {
+			if i%2 == 0 && node.Val <= pre || i%2 == 1 && node.Val >= pre {
 				return false
 			}
-			pre = node
+			pre = node.Val
 
 			if node.Left != nil {
 				queue = append(queue, node.Left)
