@@ -9,12 +9,11 @@ type Node struct {
 	BottomRight *Node
 }
 
-func same(grid [][]int) bool {
-	n := len(grid)
-	a := grid[0][0]
-	for i := 0; i < n; i++ {
-		for j := 0; j < n; j++ {
-			if grid[i][j] != a {
+func same(grid [][]int, a, b, c, d int) bool {
+	x := grid[a][c]
+	for i := a; i < b; i++ {
+		for j := c; j < d; j++ {
+			if grid[i][j] != x {
 				return false
 			}
 		}
@@ -23,44 +22,32 @@ func same(grid [][]int) bool {
 	return true
 }
 
-func cut(grid [][]int, start1, end1, start2, end2 int) [][]int {
-	res := make([][]int, end1-start1)
-
-	for i := 0; i < end1-start1; i++ {
-		res[i] = make([]int, end1-start1)
-	}
-
-	for i := start1; i < end1; i++ {
-		for j := start2; j < end2; j++ {
-			res[i-start1][j-start2] = grid[i][j]
-		}
-	}
-
-	return res
+func construct(grid [][]int) *Node {
+	return cons(grid, 0, len(grid), 0, len(grid))
 }
 
-func construct(grid [][]int) *Node {
-	n := len(grid)
+func cons(grid [][]int, a, b, c, d int) *Node {
+	n := b - a
 
 	if n == 1 {
 		return &Node{
-			Val:    grid[0][0] == 1,
+			Val:    grid[a][c] == 1,
 			IsLeaf: true,
 		}
 	}
 
-	if same(grid) {
+	if same(grid, a, b, c, d) {
 		return &Node{
-			Val:    grid[0][0] == 1,
+			Val:    grid[a][c] == 1,
 			IsLeaf: true,
 		}
 	}
 
 	return &Node{
 		IsLeaf:      false,
-		TopLeft:     construct(cut(grid, 0, n/2, 0, n/2)),
-		TopRight:    construct(cut(grid, 0, n/2, n/2, n)),
-		BottomLeft:  construct(cut(grid, n/2, n, 0, n/2)),
-		BottomRight: construct(cut(grid, n/2, n, n/2, n)),
+		TopLeft:     cons(grid, a, (a+b)/2, c, (c+d)/2),
+		TopRight:    cons(grid, a, (a+b)/2, (c+d)/2, d),
+		BottomLeft:  cons(grid, (a+b)/2, b, c, (c+d)/2),
+		BottomRight: cons(grid, (a+b)/2, b, (c+d)/2, d),
 	}
 }
