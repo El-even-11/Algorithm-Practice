@@ -37,6 +37,14 @@ func dfs(i, j int, q int) bool {
 }
 
 func hasValidPath(_grid [][]byte) bool {
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			for k := 0; k < m+n; k++ {
+				exist[m][n][k] = false
+			}
+		}
+	}
+
 	grid = _grid
 	m = len(grid)
 	n = len(grid[0])
