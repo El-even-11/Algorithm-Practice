@@ -1,16 +1,21 @@
 package main
 
-import "fmt"
+import "time"
 
 func main() {
-	g := [][]int{
-		{1, 2, 3, 4},
-		{1, 2, 3, 4},
-		{1, 2, 3, 4},
-		{1, 2, 3, 4},
-	}
+	chpool := make([]chan int, 1)
+	go func() {
+		time.Sleep(10 * time.Second)
+		println("here2")
+		chpool[0] = make(chan int)
+	}()
 
-	a := g[1:3][1:3]
-
-	fmt.Println(a)
+	println("here1")
+	go func() {
+		println("here4")		
+		chpool[0] <- 1
+		println("here5")	
+	}()
+	<-chpool[0]
+	println("here3")
 }
